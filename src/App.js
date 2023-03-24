@@ -1,8 +1,8 @@
 import React, { Suspense, Fragment, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Loading from "./components/Loading";
-import Layout from "./layout";
+import { CircularProgress, Box } from "@mui/material";
 
+import Layout from "./layout";
 const Home = React.lazy(() => import("./pages/Home/index"));
 const Details = React.lazy(() => import("./pages/Details/index"));
 const New = React.lazy(() => import("./pages/New/index"));
@@ -51,7 +51,13 @@ function App() {
 
   return (
     <Fragment>
-      <Suspense fallback={<Loading />}>
+      <Suspense
+        fallback={
+          <Box sx={{ position: "absolute", top: "45%", left: "48%" }}>
+            <CircularProgress />
+          </Box>
+        }
+      >
         <Layout>
           <Routes>
             <Route path="/" element={<Home data={array} />} />

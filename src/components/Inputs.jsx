@@ -26,7 +26,6 @@ const Inputs = ({ type, label, value, holder, name, min, max, func }) => {
         value={value}
         placeholder={holder}
         onChange={(e) => func(e)}
-        required
         style={{
           font: "400 16px/19.36px inter,sans-serif",
           padding: "16px",

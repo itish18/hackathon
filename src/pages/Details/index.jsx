@@ -166,6 +166,7 @@ const Details = ({ data, onDeleteAndFavEntry }) => {
             display: "flex",
             flexDirection: "column",
             gap: "40px",
+            maxWidth: "20rem",
           }}
         >
           <Box
@@ -229,14 +230,16 @@ const Details = ({ data, onDeleteAndFavEntry }) => {
                 window.open(hackathon?.git);
               }}
             />
-            <OutlineButton
-              text="Other Link"
-              icon={<FiExternalLink color="grey" size="20px" />}
-              color="grey"
-              func={() => {
-                window.open(hackathon?.otherLink);
-              }}
-            />
+            {hackathon?.otherLink && (
+              <OutlineButton
+                text="Other Link"
+                icon={<FiExternalLink color="grey" size="20px" />}
+                color="grey"
+                func={() => {
+                  window.open(hackathon?.otherLink);
+                }}
+              />
+            )}
           </Box>
         </Box>
       </Box>

@@ -5,9 +5,6 @@ const Heading = ({ heading }) => {
     <Typography
       sx={{
         font: "600 42px/63px poppins,sans-serif",
-        textOverflow: "ellipsis",
-        overflow: "hidden",
-        whiteSpace: "wrap",
       }}
     >
       {heading}

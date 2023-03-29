@@ -79,7 +79,6 @@ const HackathonBox = ({
               func={handleChange}
               type="date"
               name="start"
-              min={new Date().toISOString().split("T")[0]}
               value={values.start}
             />
             <Inputs
@@ -89,11 +88,7 @@ const HackathonBox = ({
               type="date"
               name="end"
               value={values.end}
-              min={
-                values.start
-                  ? values.start
-                  : new Date().toISOString().split("T")[0]
-              }
+              min={values.start}
             />
           </Box>
 

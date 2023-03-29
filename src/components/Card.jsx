@@ -13,19 +13,22 @@ const Card = ({ id, image, title, summary, uploaded }) => {
         flexDirection: "column",
         borderRadius: "16px",
         padding: "24px",
-        gap: "32px",
+        gap: "45px",
         bgcolor: "white",
         boxShadow:
           " 0px 0px 25px 10px rgba(132, 132, 132, 0.16), inset 0px -3px 6px rgba(0, 0, 0, 0.06)",
         width: "100%",
-        maxWidth: "320px",
+        maxWidth: "340px",
+        height: "100%",
+        maxHeight: "290px",
+
         cursor: "pointer",
       }}
       onClick={() => nav(`/${id}`)}
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: "24px" }}>
         <img
-          src={image.url}
+          src={image?.url}
           alt="profile"
           style={{
             width: "100px",
@@ -37,9 +40,9 @@ const Card = ({ id, image, title, summary, uploaded }) => {
         <Typography
           sx={{
             font: "500 20px/30px poppins,sans-serif",
-            // textOverflow: "ellipsis",
-            // overflow: "hidden",
-            // whiteSpace: "noWrap",
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+            whiteSpace: "noWrap",
           }}
         >
           {title}
@@ -52,6 +55,12 @@ const Card = ({ id, image, title, summary, uploaded }) => {
             height: "80px",
             overflow: "clip",
             font: "400 16px/20px poppins,sans-serif",
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 4,
+
+            overflow: "hidden",
+            textOverflow: "ellipsis",
           }}
         >
           {summary}

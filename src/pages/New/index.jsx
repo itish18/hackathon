@@ -41,6 +41,34 @@ const New = ({ onAddEntry }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const { desc, end, start, git, hackName, summary, title, otherLink } =
+      values;
+
+    if (
+      !desc ||
+      !end ||
+      !start ||
+      !git ||
+      !hackName ||
+      !image.url ||
+      !image.imageName ||
+      !summary ||
+      !title
+    ) {
+      return alert("Please fill all details");
+    }
+    if (values.desc.length > 3000) {
+      return alert("Description length exceeds the limit");
+    }
+
+    if (
+      !git.startsWith("http") ||
+      (otherLink && !otherLink.startsWith("http"))
+    ) {
+      return alert("Please provide a valid link");
+    }
+
     if (values.desc.length > 3000) {
       return alert("Description length exceeds the limit");
     }

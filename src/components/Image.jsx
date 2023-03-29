@@ -42,7 +42,6 @@ const Image = ({ label, image, func }) => {
             accept="image/*"
             name="image"
             onChange={(e) => func(e.target.files[0])}
-            required
             style={{
               opacity: 0,
               cursor: "pointer",

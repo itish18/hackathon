@@ -19,7 +19,7 @@ const Home = ({ data }) => {
   const handleOldSort = () => {
     setSelectedSort("old");
     setFiletered((prev) =>
-      prev.sort((a, b) => new Date(a.uploaded) - new Date(b.uploaded))
+      prev.sort((a, b) => new Date(a.start) - new Date(b.start))
     );
     setClicked(false);
   };
@@ -27,7 +27,7 @@ const Home = ({ data }) => {
   const handleNewSort = () => {
     setSelectedSort("new");
     setFiletered((prev) =>
-      prev.sort((a, b) => new Date(b.uploaded) - new Date(a.uploaded))
+      prev.sort((a, b) => new Date(b.start) - new Date(a.start))
     );
     setClicked(false);
   };
@@ -35,12 +35,21 @@ const Home = ({ data }) => {
   const handleSearch = (e) => {
     const value = e.target.value;
     if (value.length > 0) {
-      const filtered = data.filter((item) =>
+      let filtered = data.filter((item) =>
         item.title.toLowerCase().startsWith(value.toLowerCase())
       );
       setFiletered(filtered);
     } else {
       setFiletered(data);
+    }
+    if (selectedSort === "old") {
+      setFiletered((prev) =>
+        prev.sort((a, b) => new Date(a.start) - new Date(b.start))
+      );
+    } else {
+      setFiletered((prev) =>
+        prev.sort((a, b) => new Date(b.start) - new Date(a.start))
+      );
     }
   };
 
@@ -51,6 +60,15 @@ const Home = ({ data }) => {
       setFiletered(filtered);
     } else {
       setFiletered(data);
+    }
+    if (selectedSort === "old") {
+      setFiletered((prev) =>
+        prev.sort((a, b) => new Date(a.start) - new Date(b.start))
+      );
+    } else {
+      setFiletered((prev) =>
+        prev.sort((a, b) => new Date(b.start) - new Date(a.start))
+      );
     }
   };
 
@@ -187,11 +205,10 @@ const Home = ({ data }) => {
         <Box
           sx={{
             padding: "50px 0px",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "50px 0px",
-            alignItems: "center",
-            justifyContent: "space-between",
+            display: "Grid",
+            gap: "50px 30px",
+            justifyContent: "flex-start",
+            gridTemplateColumns: "repeat(auto-fit,minmax(360px,390px))",
           }}
         >
           {filtered.map((item, i) => (
